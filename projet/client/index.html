@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Liste de restaurants avec VueJS</title>
+
+    <script src="lib/vue.min.js"></script>
+    <script src="js/script.js"></script>
+
+    
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <div id="app">
+
+                <div class="grid-content bg-purple">                 
+                        <input type="text" name="id" v-model="id" disabled class="inputMargin"></input>
+                        <form id="addForm">
+                            <input type="text" name="nom" v-model="nom" placeholder="Nom Restaurant" class="inputMargin"></input>
+                            <input type="text" name="cuisine" v-model="cuisine" placeholder="Cuisine Restaurant" class="inputMargin"></input>
+                            <button v-on:click="addRestaurant" :disabled="ajout !== true" plain class="inputMargin">Ajouter</button>
+                            <button v-on:click="modifyRestaurant" :disabled="modification !== true">Modifier</button>
+                            <button v-on:click="removeRestaurant" :disabled="modification !== true">Supprimer</button>
+                        </form>
+                </div>
+
+                <div class="grid-content bg-purple">
+
+                        <input placeholder="Recherche par nom" v-model="rechercheInput" class="inputMargin">
+                        </input>
+                        <button v-on:click="getRestaurant">Rechercher</button> 
+                </div>
+
+        <h2>Liste des restaurants :</h2>
+
+        <select v-on:click="setPageSize(pageSize)" v-model="pageSize">
+            <option disabled>Page Size</option>
+            <option>5</option>
+            <option>10</option>
+            <option>15</option>
+            <option>20</option>
+        </select>
+        
+        <table id="resto">
+            <tr>
+                <th>Nom</th>
+                <th>Cuisine</th>
+            </tr>
+            <tr v-for="(r, index) in restaurants" v-on:click="getRestaurant(index)" v-bind:style="{color:getColor(index)}">
+                <td>{{r.name}}</td>
+                <td>{{r.cuisine}}</td>
+            </tr>
+        </table>
+        <br>
+
+                <button-group>
+                    <button :disabled="pageNumber===0" @click="getPage(0)">
+                            First Page: 0
+                    </button>
+                </button-group>
+           
+                <button-group>
+                    <button :disabled="pageNumber === 0" @click="prevPage">
+                        Prev Page
+                    </button>
+                </button-group>
+    
+                <button-group>
+                    <button :disabled="true">
+                            Curr Page: {{pageNumber}}
+                    </button>
+                </button-group>
+            
+                <button-group>
+                    <button :disabled="pageNumber === lastPage" @click="nextPage">
+                        Next Page
+                    </button>
+                </button-group>
+            
+                <button-group>
+                    <button :disabled="pageNumber===lastPage" @click="getPage(lastPage)">
+                            Last Page: {{lastPage}}
+                    </button>
+                </button-group>
+            
+                <input type="text" v-model="goToPage" placeholder="Page Number"></input>
+           
+                <button v-on:click="getPage(goToPage)">Go</button>
+            
+        
+        
+    </div>
+</body>
+
+</html>

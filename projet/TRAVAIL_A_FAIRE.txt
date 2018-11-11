@@ -1,0 +1,35 @@
+1) Lancer le serveur NodeJS et le serveur MongoDB
+
+Pour ce projet, vous allez travailler sur la collection des restaurants que nous
+avons dans MongoDB.
+
+Il faut donc commencer par s'assurer que la base est lancée (si ce n'est pas le cas
+lancer la commande "mongod" dans un tab de terminal)
+
+Ensuite, vous allez devoir lancer le serveur NodeJS :
+cd serveur
+node serverCrudWithMongo.js
+
+Ouvrez localhost:8080 et vérifiez que tout marche, les données de la base doivent 
+s'afficher etc...
+
+2) Vous devrez modifier le projet client pour qu'il affiche la liste des
+restaurants dans une table, avec la pagination.
+
+Pour lancer le client, ne pas faire file:// mais utiliser un serveur séparé
+par exemple Web Server for Chrome que nous avons utilisé en TP.
+
+Vous devrez ensuite ajouter au projet la possibilité d'insérer un restaurant,
+de supprimer un restaurant, de modifier un restaurant.
+
+Aussi de le chercher par son nom.
+
+Le tout avec VueJS en mode déclaratif, comme on a vu en TP.
+
+Pour cela, allez-y incrémentalement en modifiant pas à pas le projet qui affichait
+des hobbies. Regardez les WebServices existants dans serverCrudWithMongo.js
+
+Les plus malins d'entre vous pourront aller voir les librairies graphiques
+éventuelles que vous pourrez utiliser avec VueJS (sur le site risingstarsjs dont 
+le lien est dans la page du cours...)
+
